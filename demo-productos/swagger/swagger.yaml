@@ -1,0 +1,84 @@
+openapi: "3.0.3"
+info:
+  title: "API_inventory"
+  description: "Api_Inventory"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8081"
+paths:
+  /api/v1/inventory/{productId}/products:
+    get:
+      summary: "GET api/v1/inventory/{productId}/products"
+      operationId: "get"
+      parameters:
+        - name: "productId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/InventoryResponseDto"
+  /api/v1/inventory/{productId}/products/{amount}/amount:
+    post:
+      summary: "POST api/v1/inventory/{productId}/products/{amount}/amount"
+      operationId: "buyProduct"
+      parameters:
+        - name: "productId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "amount"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/InventoryResponseDto"
+components:
+  schemas:
+    Product:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+          nullable: true
+        name:
+          type: "string"
+          nullable: true
+        price:
+          type: "number"
+          format: "float"
+          nullable: true
+        antique:
+          type: "integer"
+          format: "int32"
+          nullable: true
+    InventoryResponseDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+          nullable: true
+        product:
+          nullable: true
+          $ref: "#/components/schemas/Product"
+        amount:
+          type: "integer"
+          format: "int32"
+          nullable: true
