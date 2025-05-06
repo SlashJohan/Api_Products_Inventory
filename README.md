@@ -92,5 +92,5 @@ Los endpoints de cada microservicio están documentados automáticamente con Swa
 
 ## 👨‍💻 Autor
 
-- [Tu nombre completo]
-- [Tu LinkedIn o email (opcional)]
+- Johan Alberto Domínguez Acosta 
+- johanalbertodominguezacosta@gmail.com
